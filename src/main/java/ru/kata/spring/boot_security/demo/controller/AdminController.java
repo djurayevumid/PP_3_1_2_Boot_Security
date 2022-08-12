@@ -21,7 +21,6 @@ public class AdminController {
     }
 
     @GetMapping
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String showUsers(Model model) {
         model.addAttribute("users", userService.getAllUsers());
         return "users_info";
@@ -39,7 +38,7 @@ public class AdminController {
         return "edit_user";
     }
 
-    @GetMapping("/new")
+    @GetMapping("/users/new")
     public String createUser(Model model) {
         User user = new User();
         model.addAttribute("user", user);
@@ -49,7 +48,7 @@ public class AdminController {
     @PostMapping("/{id}")
     public String updateUser(@PathVariable int id, @ModelAttribute("user") User user) {
         userService.updateUser(user);
-        return "redirect:/admin";
+        return "redirect:/admin/";
     }
 
     @GetMapping("/{id}")

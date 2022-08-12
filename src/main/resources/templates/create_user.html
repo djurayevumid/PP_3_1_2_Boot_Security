@@ -12,7 +12,7 @@
         <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
             <h1 class="text-center">Create new user</h1>
             <div class="card-body">
-                <form th:action="@{/users/new}" th:object="${user}" method="post">
+                <form th:action="@{/admin/users}" th:object="${user}" method="post">
                     <div class="form-group">
                         <label>User's name </label>
                         <input
@@ -42,7 +42,6 @@
                                 value=""
                                 placeholder="Enter user's department"
                         />
-
                     </div>
                     <div class="form-group">
                         <label>User's salary</label>
@@ -54,12 +53,41 @@
                                 placeholder="Enter user's salary"
                         />
                     </div>
+                    <div class="form-group">
+                        <label>User's username</label>
+                        <input
+                                type="text"
+                                name="username"
+                                class="form-control"
+                                value=""
+                                placeholder="Enter user's username"
+                        />
+                    </div>
+                    <div class="form-group">
+                        <label>User's password</label>
+                        <input
+                                type="password"
+                                name="password"
+                                class="form-control"
+                                value=""
+                                placeholder="Enter user's password"
+                        />
+                    </div>
+                    <div class="form-group">
+                        <label>User's role</label>
+                        <input
+                                type="text"
+                                name="roles"
+                                class="form-control"
+                                value=""
+                                placeholder="Enter user's role"
+                        />
+                    </div>
                     <div class="box-footer">
                         <button type="submit" class="btn btn-primary">
                             Submit
                         </button>
                     </div>
-
                 </form>
             </div>
         </div>

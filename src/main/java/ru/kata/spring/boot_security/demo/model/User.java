@@ -134,10 +134,6 @@ public class User implements UserDetails {
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return roles.stream().map(role -> new SimpleGrantedAuthority(role.getName())).collect(Collectors.toList());
     }
-
-
-
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
