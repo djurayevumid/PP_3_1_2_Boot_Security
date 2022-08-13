@@ -11,7 +11,7 @@ import ru.kata.spring.boot_security.demo.service.UserService;
 import java.security.Principal;
 
 @Controller
-@RequestMapping("/admin")
+
 public class AdminController {
 
     private final UserService userService;
@@ -20,38 +20,38 @@ public class AdminController {
         this.userService = userService;
     }
 
-    @GetMapping
+    @GetMapping("/admin")
     public String showUsers(Model model) {
         model.addAttribute("users", userService.getAllUsers());
         return "users_info";
     }
 
-    @PostMapping
+    @PostMapping("/admin")
     public String saveUser(@ModelAttribute("user") User user) {
         userService.saveUser(user);
         return "redirect:/admin";
     }
 
-    @GetMapping("/edit/{id}")
+    @GetMapping("/admin/users/edit/{id}")
     public String editUser(@PathVariable int id, Model model) {
         model.addAttribute("user", userService.getUser(id));
         return "edit_user";
     }
 
-    @GetMapping("/users/new")
+    @GetMapping("/admin/users/new")
     public String createUser(Model model) {
         User user = new User();
         model.addAttribute("user", user);
         return "create_user";
     }
 
-    @PostMapping("/{id}")
+    @PostMapping("/admin/users/{id}")
     public String updateUser(@PathVariable int id, @ModelAttribute("user") User user) {
         userService.updateUser(user);
-        return "redirect:/admin/";
+        return "redirect:/admin";
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/admin/users/{id}")
     public String deleteUser(@PathVariable int id) {
         userService.deleteUser(id);
         return "redirect:/admin";

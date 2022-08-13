@@ -51,7 +51,10 @@ public class UserServiceImpl implements UserService {
         createdUser.setSurname(user.getSurname());
         createdUser.setDepartment(user.getDepartment());
         createdUser.setSalary(user.getSalary());
-        return userRepository.save(user);
+        createdUser.setUsername(user.getUsername());
+        createdUser.setPassword(user.getPassword()  );
+        createdUser.setRoles(user.getRoles());
+        return userRepository.save(createdUser);
     }
 
     @Override
